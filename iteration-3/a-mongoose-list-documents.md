@@ -30,15 +30,15 @@ router.get('/books', (req, res, next) => {
   Book.find()
     .then(allTheBooksFromDB => {
       console.log('Retrieved books from DB:', allTheBooksFromDB);
+      res.send('books');
     })
     .catch(error => {
       console.log('Error while getting the books from the DB: ', error);
     })
-  res.render('books');
 });
 ```
 
-Si nuestra consulta va bien, deberíamos obtener todos los libros que tenemos en la base de datos.
+Si nuestra consulta va bien, deberíamos ver en la consola del servidor todos los libros que tenemos en la base de datos (que se han creado en la BDD a partir del archivo seeds.js) yendo a la página /books en el navegador (http://localhost:3000/books).
 
     ¿Cómo podemos pasar esa información a nuestra vista?
     ¿Dónde deberíamos llamar al método res.render()?
@@ -60,7 +60,19 @@ router.get('/books', (req, res, next) => {
 });
 ```
 
-Finalmente, vea que ya tenemos un código en nuestro books.hbs para mostrar cada libro. Vaya a:
+Finalmente, podemos agregar este código en nuestro books.hbs para mostrar cada libro:
+
+```html
+{{!-- views/books.hbs --}}
+
+<h1>BOOKS</h1>
+
+{{#each books}}
+    <p>{{this.title}}</p>
+{{/each}}
+```
+
+Luego vaya a:
 
 http://localhost:3000/books/
 

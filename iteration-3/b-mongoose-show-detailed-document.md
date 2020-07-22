@@ -11,14 +11,12 @@ Primero, asegúrese de que todos los títulos en books.hbs sean hipervínculos. 
 ¿Qué campo podemos usar? ¡Si! Parece que el _id es el mejor.
 
 ```html
-// views/books.hbs
+{{!-- views/books.hbs --}}
 
 <h1>BOOKS</h1>
 {{#each books}}
     <p>
         <a href="book/{{this._id}}">{{this.title}}</a>
- 
-        <a href="/book/edit?book_id={{this._id}}" class="edit-button">EDIT</a>
     </p>
 {{/each}}
 ```
@@ -56,7 +54,7 @@ router.get('/book/:bookId', (req, res, next) => {
 
 Siga adelante y haga clic en diferentes libros, y debería ver en la consola el campo _id de cada libro en el que hizo clic.
 
-Consultando la DB
+**Consultando la DB**
 
 Tenemos todo lo que necesitamos para consultar nuestra base de datos, recuperar toda la información sobre el libro cliqueado y pasar los datos a nuestra vista.
 

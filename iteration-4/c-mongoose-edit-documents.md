@@ -38,7 +38,8 @@ Primero, agreguemos el link de edición a cada uno de nuestros libros en la ruta
     Query String. Otra opción es establecer la ruta: book/edit y pasar los datos como un query string usando ?
 
 Elegiremos la segunda opción, ¡pero ambas son válidas! 😉  
-Agregue el siguiente código a nuestro archivo books.hbs:
+
+Modificamos el contenido de nuestro archivo books.hbs:
 
 ```html
 <h1>BOOKS</h1>
@@ -53,7 +54,7 @@ Agregue el siguiente código a nuestro archivo books.hbs:
 
 Observe cómo establecemos el atributo href para editar los documentos, de esta manera la propiedad book_id será dinámica.
 
-También puede agregar el siguiente CSS al archivo style.css, para diferenciar el botón de edición.
+También puede agregar el siguiente CSS al archivo style.css en la carpeta /public/stylesheets para diferenciar el botón de edición.
 
 ```css
 .edit-button {
@@ -69,6 +70,7 @@ También puede agregar el siguiente CSS al archivo style.css, para diferenciar e
 ## Obtener los datos
 
 Sabemos a dónde irá el usuario cuando haga clic en el botón Editar. Necesitamos crear la ruta para obtener esa solicitud del usuario y renderizar la vista.
+**colocar esta ruta GET /book/edit antes de la ruta GET /book/:bookId**
 
 ```js
 router.get("/book/edit", (req, res, next) => {

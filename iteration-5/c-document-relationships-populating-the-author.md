@@ -34,7 +34,7 @@ Necesitamos actualizar nuestro book-details.hbs:
 <h1>{{book.title}}</h1>
 <span>Written by: 
 {{#each book.author}}
-{{name}} {{lastName}}
+{{this.name}} {{this.lastName}} ( {{this.nationality}} )
 {{/each}}
 </span>
 <p>Summary: {{book.description}}</p>

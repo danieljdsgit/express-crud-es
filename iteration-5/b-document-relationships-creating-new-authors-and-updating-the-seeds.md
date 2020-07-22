@@ -3,7 +3,7 @@
 Deberíamos agregar un formulario para crear nuevos autores. De la misma manera que lo hicimos para los libros, necesitamos crear un archivo author-add.hbs para mostrar el formulario, y una ruta /authors/add con los métodos GET y POST. Vamos a hacerlo:
 
 ```html
-/*---author-add.hbs---*/
+<!-- author-add.hbs -->
 <form action="/authors/add" method="post">
     <label for="">Name:</label>
     <input type="text" name="name">
@@ -49,6 +49,8 @@ router.post('/authors/add', (req, res, next) => {
   })
 });
 ```
+
+Ir aquí http://localhost:3000/authors/add, agregar un nuevo autor, y comprobar en la base de datos que se ha creado correctamente.
 
 ## Actualización de Seeds.js
 

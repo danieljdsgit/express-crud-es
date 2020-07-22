@@ -113,7 +113,7 @@ Book.create(books, (err) => {
 });
 ```
 
-Y luego ejecuta el siguiente código:
+Y luego desde la carpeta/directorio raíz del proyecto ejecuta el siguiente código:
 
 ```
 $ node bin/seeds.js

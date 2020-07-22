@@ -23,7 +23,7 @@ Entonces, comencemos a usar este comando y creemos nuestro primer proyecto.
 Llamaremos a nuestro proyecto library-project, por lo que ejecutaremos la siguiente línea:
 
 ```
-$  express --hbs library-project
+$  express --view=hbs library-project
 ```
 
 Luego de navegar al proyecto que acabamos de crear, podemos ejecutar nuestra aplicación.
@@ -41,13 +41,13 @@ npm install
 E instalar nodemon:
 
 ```
-npm install nodemon
+npm install nodemon --save-dev
 ```
 
-También necesitamos instalar mongoose, serve-favicon, body-parser y dotenv:
+También necesitamos instalar mongoose, serve-favicon y dotenv:
 
 ```
-npm install mongoose serve-favicon body-parser dotenv
+npm install mongoose serve-favicon dotenv
 ```
 
 Necesitamos crear la carpeta para los modelos:
@@ -56,7 +56,7 @@ Necesitamos crear la carpeta para los modelos:
 mkdir models
 ```
 
-Y necesitamos agregar esta línea a los scripts:
+Y necesitamos agregar esta línea a los scripts del archivo package.json:
 
 ```
 "dev": "nodemon ./bin/www"
@@ -70,16 +70,15 @@ En nuestra app.js necesitamos agregar las siguientes líneas:
 require('dotenv').config();
 ```
 
-2. Requerimos bodyParser, favicon, hbs, y mongoose.
+2. Luego de las dependencias del proyecto (y antes de requerir los archivos de las rutas), requerimos  favicon, hbs, y mongoose.
 
 ```js
-const bodyParser = require('body-parser');
 const favicon = require('serve-favicon');
 const hbs = require('hbs');
 const mongoose = require('mongoose');
 ```
 
-3. La conexión a mongoDB:
+3. Luego de agregar las líneas anteriores, agregamos la conexión a mongoDB:
 
 ```js
 mongoose
@@ -97,17 +96,15 @@ mongoose
   });
 ```
 
-4. El path para que la aplicación pueda encontrar nuestro favicon:
+4. Agregamos el path para que la aplicación pueda encontrar nuestro favicon:
+
+**si no están usando el boilerplate, y como express-generator no trae ningún favicon por defecto, hay que ir a copiar/pegarlo desde esta location: express-generator-boilerplate/public/images/favicon.ico (si no lo haces, te tira error cuando ejecutamos npm run dev
 
 ```js
+//luego de esta línea...
+app.use(express.static(path.join(__dirname, "public")));
+//agregamos...
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
-```
-
-5. Agregamos estas líneas para parsing de json y urls codificadas.
-
-```js
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
 ```
 
 Para el modo de (dev) desarrollo (usando nodemosn) debemos ejecutar el siguiente comando:

@@ -24,13 +24,7 @@ Podemos crear un nuevo Book usando el modelo que importamos. ¡Es importante not
 const newBook = new Book({ title, author, description, rating});
 ```
 
-Agregue el modelo a routes/index.js
-
-```js
-const Book = require('../models/book');
-```
-
-Podemos almacenarlo en la base de datos, utilizando el método save(). Dado que este es un proceso asincrónico, debemos procesarlo como una Promise. Si todo sale bien, recibiremos el libro que acabamos de guardar. De lo contrario, obtendremos un error. ¡Necesitamos controlar ambas opciones!
+Podemos almacenar el nuevo libro en la base de datos, utilizando el método save(). Dado que este es un proceso asincrónico, debemos procesarlo como una Promise. Si todo sale bien, recibiremos el libro que acabamos de guardar. De lo contrario, obtendremos un error. ¡Necesitamos controlar ambas opciones!
 
 ```js
 newBook.save()
@@ -42,7 +36,7 @@ newBook.save()
 })
 ```
 
-Finalmente, podemos redirigir a nuestro usuario a la vista /books, donde listaremos todos los libros que tenemos en la base de datos. El nuevo libro ya debería estar allí. Deberíamos tener el siguiente código en nuestra ruta:
+Finalmente, podemos redirigir a nuestro usuario a la ruta /books, donde listaremos todos los libros que tenemos en la base de datos. El nuevo libro ya debería estar allí. Deberíamos tener el siguiente código en nuestra ruta:
 
 ```js
 router.post('/book/add', (req, res, next) => {
@@ -60,8 +54,6 @@ router.post('/book/add', (req, res, next) => {
 
 Vaya a http://localhost:3000/book/add y cree un libro.
 
-Genial! Ahora deberíamos ver en la base de datos el nuevo libro que acabamos de crear.
-
-* /books aún no existe, así que no se preocupe si ve un 404 después de la redirección.
+Genial! Ahora deberíamos ver en la base de datos el nuevo libro que acabamos de crear. Cuando seamos redirigidos a la página /books, también deberiamos ver el nuevo libro que acabamos de crear en la lista de libros.
 
 Crear documentos es una acción súper estándar en las aplicaciones web, y debe asegurarse de comprender paso a paso todo el proceso que necesitará para hacerlo, por lo que si algo no está lo suficientemente claro, ¡ahora es el momento perfecto para preguntar!
