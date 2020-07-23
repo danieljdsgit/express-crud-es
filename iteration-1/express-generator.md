@@ -98,7 +98,7 @@ mongoose
 
 4. Agregamos el path para que la aplicación pueda encontrar nuestro favicon:
 
-**si no están usando el boilerplate, y como express-generator no trae ningún favicon por defecto, hay que ir a copiar/pegarlo desde esta location: express-generator-boilerplate/public/images/favicon.ico (si no lo haces, te tira error cuando ejecutamos npm run dev
+**si no están usando el boilerplate, y como express-generator no trae ningún favicon por defecto, hay que ir a copiar/pegarlo desde esta location: express-generator-boilerplate/public/images/favicon.ico (si no lo haces, da un error cuando ejecutamos npm run dev)
 
 ```js
 //luego de esta línea...
@@ -107,7 +107,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 ```
 
-Para el modo de (dev) desarrollo (usando nodemosn) debemos ejecutar el siguiente comando:
+Para el modo de (dev) desarrollo (usando nodemon) debemos ejecutar el siguiente comando:
 
 ```
 $ npm run dev
