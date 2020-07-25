@@ -1,15 +1,23 @@
 //model/book.js
+
 //estamos creando el modelo que debera seguir cada libro que queramos incluir en nuestra DB
 const mongoose = require("mongoose");
 //llamamos a mongoose para interactuar con DB
 const Schema = mongoose.Schema;
 //y le indicamos a mongoose el modelo de objeto
 
-const bookSchema = new Schema({
+const bookSchema = new Schema(
+{
     title: String,
     description: String,
-    author: String,
-    rating: Number
+    author: [ { type : Schema.Types.ObjectId, ref: 'Author' } ],
+    rating: Number,
+    reviews: [
+        {
+            user: String,
+            comments: String
+        }
+    ]
 }, {
     timestamps: {
         createdAt: "created_at",
