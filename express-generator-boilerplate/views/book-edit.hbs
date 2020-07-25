@@ -1,0 +1,17 @@
+<!-- views/book-edit -->
+
+<form action="/book/edit?book_id={{book._id}}" method="post">
+  <label for="">Title:</label>
+  <input type="text" name="{{book.title}}" />
+
+  <label for="">Author:</label>
+  <input type="text" name="{{book.author}}" />
+
+  <label for="">Description:</label>
+  <input type="text" name="{{book.description}}" />
+
+  <label for="">Rate:</label>
+  <input type="number" name="{{book.rating}}" />
+
+  <button type="submit">EDIT</button>
+</form>
